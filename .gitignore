@@ -1,0 +1,7 @@
+*/*.o
+*.out
+fdf
+fdf_bonus
+intra_fdf
+libft/libft.a
+out

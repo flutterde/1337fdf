@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 19:42:32 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/09 14:52:15 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:26:50 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ static t_dmdt	calcul_dimensions(t_point **pnt, t_dimensions dm)
 	return (ndm);
 }
 
-static int	scale_f(t_dimensions data)
+static float	scale_f(t_dimensions data)
 {
-	float scale_f = 0;
-
+	float scale_f;
+	
+	scale_f = 0;
+	if (data.cols == 0 || data.rows == 0)
+		return (scale_f);
 	if (1000 / data.cols < 1000 / data.rows)
 		scale_f = 1000 / data.cols;
 	else
@@ -65,5 +68,8 @@ t_dimensions	iso_dimensions(t_point **pnts, t_dimensions dm)
 	printf("bounding hegiht -> %d\n", ndm.rows);
 	printf("bounding width -> %d\n", ndm.cols);
 	ndm.scale_f = scale_f(ndm);
+	if (ndm.scale_f <= 0)
+		ndm.scale_f = 1;
+	printf("scale factor -> %f\n", ndm.scale_f);
 	return (ndm);
 }

@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:37:17 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/10 21:43:15 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:14:09 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ typedef struct s_point
 	float		z;
 	float		u;
 	float		v;
+	int			dx;
+	int			dy;
+	int			dz;
 	uint32_t	color;
+	uint32_t	ccolor;
 }	t_point;
 
 

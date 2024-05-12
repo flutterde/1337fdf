@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:09:46 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/11 13:22:59 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:07:46 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	fdf_bgs(t_data data)
 		j = 0;
 		while (j < 200)
 		{
-			fdf_put_pixel((FDF_WIDTH * .015) + j, 9 + i, 0x00FF00FF, data.img);
+			fdf_put_pixel((FDF_WIDTH * .015) + j, 59 + i, 0x00FF00FF, data.img);
 			j++;
 		}
 		i++;
@@ -32,14 +32,18 @@ void	fdf_bgs(t_data data)
 
 void	fdf_instructions(mlx_t *win)
 {
-	mlx_put_string(win, "Guides of use:", FDF_WIDTH * .02, 10);
-	mlx_put_string(win, "P: Parallel projection", FDF_WIDTH * .02, 40);
-	mlx_put_string(win, "Z: Zoom in", FDF_WIDTH * .02, 70);
-	mlx_put_string(win, "X: Zoom out", FDF_WIDTH * .02, 100);
-	mlx_put_string(win, "G: Go Crazy", FDF_WIDTH * .02, 130);
-	mlx_put_string(win, "R: Reset", FDF_WIDTH * .02, 130);
-	mlx_put_string(win, "LEFT: Move left", FDF_WIDTH * .02, 160);
-	mlx_put_string(win, "RIGHT: Move right", FDF_WIDTH * .02, 190);
+	mlx_put_string(win, "Guides of use:", FDF_WIDTH * .02, 60);
+	mlx_put_string(win, "P: Parallel projection", FDF_WIDTH * .02, 120);
+	mlx_put_string(win, "Z: Zoom in", FDF_WIDTH * .02, 150);
+	mlx_put_string(win, "X: Zoom out", FDF_WIDTH * .02, 180);
+	mlx_put_string(win, "G: Go Crazy", FDF_WIDTH * .02, 210);
+	mlx_put_string(win, "R: Reset", FDF_WIDTH * .02, 240);
+	mlx_put_string(win, "<: Move left (long p.)", FDF_WIDTH * .02, 270);
+	mlx_put_string(win, ">: Move right (long p.)", FDF_WIDTH * .02, 300);
+	mlx_put_string(win, "^: Move up (long p.)", FDF_WIDTH * .02, 330);
+	mlx_put_string(win, "v: Move down (long p.)", FDF_WIDTH * .02, 360);
+	mlx_put_string(win, "ochouati@1337", FDF_WIDTH * .02, 1040);
+	
 }
 
 void	fdf_sidebare(t_data data)

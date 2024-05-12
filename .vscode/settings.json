@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"fdf_bonus.h": "c",
-		"fdf.h": "c"
+		"fdf.h": "c",
+		"data_types_bonus.h": "c"
 	}
 }

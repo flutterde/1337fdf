@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:53 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/09 14:31:06 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:23:14 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,16 @@ static void	set_vals(t_point *pnt, char *str)
 	pnt->y0 = pnt->y;
 	pnt->z0 = ft_atoi(str);
 	pnt->z = pnt->z0;
-	rotation_z(&pnt->x, &pnt->y, &pnt->z);
-	rotation_x(&pnt->x, &pnt->y, &pnt->z);
+	pnt->dx = 45;
+	pnt->dy = 0;
+	pnt->dz = 0;
+	rotation_z(&pnt->x, &pnt->y, &pnt->z, 0);
+	rotation_x(&pnt->x, &pnt->y, &pnt->z, 45);
+	rotation_y(&pnt->x, &pnt->y, &pnt->z, 0);
 	pnt->u = pnt->x;
 	pnt->v = pnt->y;
 	pnt->color = _get_color(str);
+	pnt->ccolor = pnt->color;
 }
 
 static t_point	*_get_points(char *line, int cols, int y)

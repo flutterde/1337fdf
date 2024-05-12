@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:36:40 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/11 13:23:51 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/12 15:13:51 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	_leaks(void)
 {
-	// system("leaks fdf");
+	system("leaks fdf");
 }
 
 static void	_destroy(void *mlx, void *img)

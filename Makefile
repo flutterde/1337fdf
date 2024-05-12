@@ -13,6 +13,7 @@ SRCS = ./mandatory/main.c ./mandatory/map/map_dimensions.c ./mandatory/utils/ft_
 INCLUDES = MLX42/build/libmlx42.a libft/libft.a  MLX42/build/libglfw3.a -Iinclude -lm -framework Cocoa -framework OpenGL -framework IOKit
 
 NAME = fdf
+BONUS_NAME = fdf_bonus
 OBJS = $(SRCS:.c=.o)
 
 
@@ -24,15 +25,21 @@ $(NAME) : $(OBJS)
 		$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
 
 bonus : 
-	make bonus -C bonus/
+		make -C bonus/
 
 clean :
-	$(RM) $(OBJS) 
+	@$(RM) $(OBJS) 
+	@make clean -C libft/
+	@make clean -C bonus/
 
 %.o : %.c $(HEADERS) 
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 fclean : clean 
-		$(RM) $(NAME) 
+		@$(RM) $(NAME) 
+		@make fclean -C libft/
+		@make fclean -C bonus/
 
 re : fclean all 
+
+.PHONY: all clean fclean re bonus

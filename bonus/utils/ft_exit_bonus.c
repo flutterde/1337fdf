@@ -6,13 +6,13 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:56:15 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/08 20:58:00 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:40:56 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf_bonus.h"
 
-void	ft_exit()
+void	ft_exit(void)
 {
 	ft_printf("Error\n");
 	exit(1);

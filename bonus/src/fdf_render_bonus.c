@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:10:51 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 15:50:29 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:46:31 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	draw_points(t_point **pnts, t_data *dt)
 		j = 0;
 		while (j < dt->dm.cols)
 		{
-			fdf_put_pixel(pnts[i][j].u, pnts[i][j].v, pnts[i][j].color, dt->img);
+			fdf_put_pixel(pnts[i][j].u, pnts[i][j].v,
+				pnts[i][j].color, dt->img);
 			j++;
 		}
 		i++;
@@ -94,8 +95,10 @@ static void	__zoom(t_point **pnts, t_dimensions dm, t_dimensions rdm)
 		j = 0;
 		while (j < dm.cols)
 		{
-			pnts[i][j].u = (pnts[i][j].u * rdm.scale_f) + ((0 - rdm.dt.mn_x) * rdm.scale_f) + FDF_WIDTH * .09;
-			pnts[i][j].v = (pnts[i][j].v * rdm.scale_f) + ((0 - rdm.dt.mn_y) * rdm.scale_f);
+			pnts[i][j].u = (pnts[i][j].u * rdm.scale_f)
+				+ ((0 - rdm.dt.mn_x) * rdm.scale_f) + FDF_WIDTH * .09;
+			pnts[i][j].v = (pnts[i][j].v * rdm.scale_f)
+				+ ((0 - rdm.dt.mn_y) * rdm.scale_f);
 			j++;
 		}
 		i++;
@@ -109,8 +112,6 @@ void	fdf_render(void *data)
 
 	dt = data;
 	__zoom(dt->points, dt->dm, dt->rdm);
-	draw_points(dt->points, dt);
 	fdf_link_points(dt->points, dt->dm, dt->img);
 	fdf_sidebare(*dt);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:26:55 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 16:03:59 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:11:50 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	_zoom_in(t_data data)
 			j++;
 		}
 		i++;
-	}	
+	}
 }
 
 void	_zoom_out(t_data data)
@@ -48,7 +48,6 @@ void	_zoom_out(t_data data)
 		}
 		i++;
 	}
-	
 }
 
 void	fdf_zoomfn(t_data data, bool in)
@@ -57,7 +56,6 @@ void	fdf_zoomfn(t_data data, bool in)
 		_zoom_in(data);
 	else
 		_zoom_out(data);
-	
 	data.rdm = iso_dimensions(data.points, data.dm);
 	fdf_clear(data.img);
 	fdf_link_points(data.points, data.dm, data.img);

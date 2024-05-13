@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:37:17 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 17:14:09 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:35:27 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,62 +19,70 @@
 # define BASE1 "0123456789ABCDEF"
 # define BASE2 "0123456789abcdef"
 
-
 typedef struct s_dmdt
 {
-	float	mn_x;
-	float	mx_x;
-	float	mn_y;
-	float	mx_y;
-}	t_dmdt;
+	float			mn_x;
+	float			mx_x;
+	float			mn_y;
+	float			mx_y;
+}					t_dmdt;
 
 typedef struct s_dimensions
 {
-	int	cols;
-	int	rows;
-	float scale_f;
-	t_dmdt	dt;
-}	t_dimensions;
+	int				cols;
+	int				rows;
+	float			scale_f;
+	t_dmdt			dt;
+}					t_dimensions;
 
 typedef struct s_point
 {
-	float		x0;
-	float		y0;
-	float		z0;
-	float		x;
-	float		y;
-	float		z;
-	float		u;
-	float		v;
-	int			dx;
-	int			dy;
-	int			dz;
-	uint32_t	color;
-	uint32_t	ccolor;
-}	t_point;
-
-
+	float			x0;
+	float			y0;
+	float			z0;
+	float			x;
+	float			y;
+	float			z;
+	float			u;
+	float			v;
+	int				dx;
+	int				dy;
+	int				dz;
+	uint32_t		color;
+	uint32_t		ccolor;
+}					t_point;
 
 typedef struct s_data
 {
-	mlx_t 			*win;
+	mlx_t			*win;
 	mlx_image_t		*img;
-	t_point 		**points;
-	t_dimensions 	dm;
-	t_dimensions 	rdm;
-	bool			is_p;
-}	t_data;
+	t_point			**points;
+	t_dimensions	dm;
+	t_dimensions	rdm;
+}					t_data;
 
 typedef struct s_color
 {
-	uint8_t		r1;
-	uint8_t		r2;
-	uint8_t		g1;
-	uint8_t		g2;
-	uint8_t		b1;
-	uint8_t		b2;
-	uint8_t		a;
-	uint32_t	color;
-}	t_color;
+	uint8_t			r1;
+	uint8_t			r2;
+	uint8_t			g1;
+	uint8_t			g2;
+	uint8_t			b1;
+	uint8_t			b2;
+	uint8_t			a;
+	uint32_t		color;
+}					t_color;
+
+typedef struct s_ddavars
+{
+	float			dx;
+	float			dy;
+	int				steps;
+	float			x_inc;
+	float			y_inc;
+	float			x;
+	float			y;
+	int				i;
+}					t_ddavars;
 
 #endif

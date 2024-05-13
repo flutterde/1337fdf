@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:41:07 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/08 19:18:27 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:42:28 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include <math.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
 # include "./../MLX42/include/MLX42/MLX42.h"

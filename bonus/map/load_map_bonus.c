@@ -6,32 +6,11 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:53 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 20:23:14 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:31:48 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf_bonus.h"
-
-static float	calcul_uv(t_point pnt, char c)
-{
-	// u = x * cos(ALPHA) + y * cos(APLHA + 120) + z * cos(APLHA - 120)
-	// v = x * sin(ALPHA) + y * sin(APLHA + 120) + z * sin(APLHA - 120)
-// 	 x = (tmp - y) * cos(0.523599);
-//  y = (tmp + y) * sin(0.523599) - z;
-	if (c == 'u')
-	{
-		// return (pnt.x * 0.7071067 + pnt.y *  -0.9659258 + pnt.z * 0.258819);
-		// return (pnt.x * 0.866025 + pnt.y * -0.866025);
-		return ((pnt.x - pnt.y) * cos(0.523599));
-	}
-	else
-	{
-		// return (pnt.x * 0.7071067 + pnt.y * 0.258819 + pnt.z * -0.9659258);
-		// return (pnt.x * 0.5 + pnt.y * 0.5 + pnt.z * -1);
-		return ((pnt.x + pnt.y) * sin(0.523599) - pnt.z);
-	}
-}
-
 
 static uint32_t	_get_color(char *str)
 {
@@ -60,8 +39,8 @@ static void	set_vals(t_point *pnt, char *str)
 	pnt->z = pnt->z0;
 	pnt->dx = 45;
 	pnt->dy = 0;
-	pnt->dz = 0;
-	rotation_z(&pnt->x, &pnt->y, &pnt->z, 0);
+	pnt->dz = 45;
+	rotation_z(&pnt->x, &pnt->y, &pnt->z, 45);
 	rotation_x(&pnt->x, &pnt->y, &pnt->z, 45);
 	rotation_y(&pnt->x, &pnt->y, &pnt->z, 0);
 	pnt->u = pnt->x;
@@ -77,14 +56,13 @@ static t_point	*_get_points(char *line, int cols, int y)
 	int		x;
 
 	x = 0;
-	(void) calcul_uv;
 	spl = split_w(line);
 	if (!spl || ft_split_size(spl) < cols)
 		return (ft_exit(), NULL);
 	pnt = malloc(sizeof(t_point) * cols);
 	if (!pnt)
 		return (ft_exit(), NULL);
-	while (spl[x] && x < cols)
+	while (spl && spl[x] && x < cols)
 	{
 		pnt[x].x = x;
 		pnt[x].y = y;
@@ -115,7 +93,7 @@ t_point	**load_map(char *map, t_dimensions dm)
 		free(ln);
 		ln = get_next_line(fd);
 		if (!ln && (i < dm.rows - 1))
-			return (ft_exit(), NULL);
+			return (close(fd), free(ln), ft_exit(), NULL);
 	}
 	free(ln);
 	return (close(fd), get_next_line(fd), pnts);

@@ -6,26 +6,25 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:36:40 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 15:13:51 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:41:53 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	_leaks(void)
+static t_data	set_dt(mlx_t *mlx, mlx_image_t *img)
 {
-	system("leaks fdf");
+	t_data	dt;
+
+	dt.img = img;
+	dt.win = mlx;
+	return (dt);
 }
 
 static void	_destroy(void *mlx, void *img)
 {
 	mlx_delete_image(mlx, img);
 	mlx_terminate(mlx);
-}
-
-void	__loop(t_data *dt)
-{
-	ft_printf("the res is: %p.\n", dt->img);
 }
 
 static void	__draw(t_dimensions dm, t_dimensions md, t_point **pnts)
@@ -42,11 +41,9 @@ static void	__draw(t_dimensions dm, t_dimensions md, t_point **pnts)
 		return ;
 	mlx_image_to_window(mlx, img, 0, 0);
 	fdf_instructions(mlx);
-	data = set_data(mlx, img, pnts, dm, md);
+	data = set_data(set_dt(mlx, img), pnts, dm, md);
 	fdf_key_hooks(data);
 	fdf_render(&data);
-	// mlx_loop_hook(mlx, &fdf_render, &data);
-	// fdf_loop(__loop, &data);
 	mlx_loop(mlx);
 	_destroy(mlx, img);
 }
@@ -55,7 +52,7 @@ void	__handler(char *map)
 {
 	t_dimensions	dm;
 	t_point			**pnts;
-	t_dimensions	md; // Map iso dimensions
+	t_dimensions	md;
 
 	dm = map_dimensions(map);
 	pnts = load_map(map, dm);
@@ -66,7 +63,6 @@ void	__handler(char *map)
 
 int	main(int ac, char **av)
 {
-	atexit(_leaks);
 	if (ac < 2 || ac > 2)
 		return (ft_printf("Error\n"), 1);
 	return (__handler(av[1]), 0);

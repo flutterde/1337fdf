@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:42:48 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/08 20:57:05 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:21:51 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_dimensions	_map_dimensions(char *map)
 	tmp = split_w(ln);
 	dm.cols = ft_split_size(tmp);
 	if (!dm.cols)
-		return (dm);
+		return (free(ln), close(fd), get_next_line(fd), ft_exit(), dm);
 	while (ln)
 	{
 		dm.rows++;

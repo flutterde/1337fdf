@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_parallel.c                                     :+:      :+:    :+:   */
+/*   fdf_parallel_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:36:23 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/09 15:09:19 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:25:04 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf_bonus.h"
 
-/* PREPER POINTS */
 void	_reset_points(t_data data)
 {
 	int	i;
@@ -33,7 +32,6 @@ void	_reset_points(t_data data)
 	data.rdm = iso_dimensions(data.points, data.dm);
 }
 
-/* SCALE THE MAP */
 static void	scale_parallel(t_data data)
 {
 	int	i;
@@ -46,7 +44,7 @@ static void	scale_parallel(t_data data)
 		while (j < data.dm.cols)
 		{
 			data.points[i][j].u *= data.rdm.scale_f;
-			data.points[i][j].v *= data.rdm.scale_f;			
+			data.points[i][j].v *= data.rdm.scale_f;
 			j++;
 		}
 		i++;
@@ -58,8 +56,8 @@ void	fdf_parallel(t_data data)
 	fdf_clear(data.img);
 	_reset_points(data);
 	scale_parallel(data);
+	data.rdm = iso_dimensions(data.points, data.dm);
 	fdf_padding(data.points, data.dm, data.rdm);
-	draw_points(data.points, &data);
 	fdf_link_points(data.points, data.dm, data.img);
 	fdf_sidebare(data);
 }

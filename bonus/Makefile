@@ -9,6 +9,7 @@ BSRCS = ./main_bonus.c ./map/map_dimensions_bonus.c ./utils/ft_exit_bonus.c \
 ./src/fdf_dda_bonus.c ./src/gradient_color_bonus.c ./map/rotation_matrices_bonus.c ./src/fdf_clear_bonus.c \
 ./src/fdf_sidebare_bonus.c ./src/fdf_parallel_bonus.c ./src/fdf_zoomfc_bonus.c \
 ./src/fdf_translate_bonus.c ./utils/random_color_bonus.c ./src/go_crazy_bonus.c ./src/fdf_rotate_bonus.c \
+./utils/fdf_reset_map_bonus.c \
 
 
 

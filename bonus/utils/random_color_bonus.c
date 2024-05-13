@@ -6,26 +6,29 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 22:22:18 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 16:05:25 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:11:42 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf_bonus.h"
-#include <time.h> 
+#include <time.h>
 
-static uint32_t __generate(void)
+static uint32_t	__generate(void)
 {
-    static int initialized = 0;
-    uint32_t color;
-    uint32_t x = 0x000000FF;
-    uint32_t y = 0xFFFFFFFF;
+	static int	init;
+	uint32_t	color;
+	uint32_t	x;
+	uint32_t	y;
 
-    if (!initialized) {
-        srand((unsigned int)(time(NULL) ^ ((size_t)&color)));
-        initialized = 1;
-    }
-    color = x + rand() % (y - x + 1);
-    return ((color << 8) | 0xFF);
+	x = 0x000000FF;
+	y = 0xFFFFFFFF;
+	if (!init)
+	{
+		srand((uint32_t)(time(NULL) ^ ((size_t) & color)));
+		init = 1;
+	}
+	color = x + rand() % (y - x + 1);
+	return ((color << 8) | 0xFF);
 }
 
 void	random_color(t_data data)

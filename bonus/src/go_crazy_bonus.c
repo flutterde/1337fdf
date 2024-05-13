@@ -6,7 +6,7 @@
 /*   By: ochouati <ochouati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:06:03 by ochouati          #+#    #+#             */
-/*   Updated: 2024/05/12 16:13:50 by ochouati         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:33:42 by ochouati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	fdf_go_crazy(t_data data)
 {
-	(void)data;
+	random_color(data);
 }
